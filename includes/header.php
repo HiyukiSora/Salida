@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/functions.php';
+
 if (!isset($currentUser)) {
     $currentUser = (function_exists('isLoggedIn') && isLoggedIn()) ? getCurrentUser() : null;
 }
