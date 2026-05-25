@@ -1,0 +1,31 @@
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# PHP
+*.log
+
+# Env file (contains credentials)
+.env
+
+# Aiven CA certificate
+ca.pem
+
+# Project specific
+assets/images/posters/*
+!assets/images/posters/.gitkeep
+
+# Test files (keep out of repo)
+test.php
+test_*.php
+verify.php

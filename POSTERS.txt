@@ -1,0 +1,6 @@
+-- POSTER SETUP --
+Save 300x450px poster images to assets/images/posters/ as:
+  1.jpg, 2.jpg, ... (matching movie IDs)
+
+Then run:
+  UPDATE movies SET poster_path = CONCAT('assets/images/posters/', id, '.jpg');
