@@ -6,11 +6,12 @@ register_shutdown_function(function () {
     }
 });
 
-$requestUri = $_SERVER['REQUEST_URI'];
-$path = parse_url($requestUri, PHP_URL_PATH);
+$page = $_SERVER['REQUEST_URI'] ?? '';
+$path = parse_url($page, PHP_URL_PATH);
 $path = trim($path, '/');
 $path = $path ?: 'index';
 
+$path = preg_replace('/\.php$/', '', $path);
 $safePath = preg_replace('/[^a-zA-Z0-9\/_-]/', '', $path);
 
 $phpFile = __DIR__ . '/../' . $safePath . '.php';
