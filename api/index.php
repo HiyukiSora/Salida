@@ -6,6 +6,9 @@ register_shutdown_function(function () {
     }
 });
 
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../includes/functions.php';
+
 $page = $_SERVER['REQUEST_URI'] ?? '';
 $path = parse_url($page, PHP_URL_PATH);
 $path = trim($path, '/');
