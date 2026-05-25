@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../includes/functions.php';
-
 ob_start();
 register_shutdown_function(function () {
     while (ob_get_level() > 0) {
