@@ -29,16 +29,15 @@ try {
             if (substr($caCert, 0, 11) === '-----BEGIN') {
                 $caPath = sys_get_temp_dir() . '/aiven-ca.pem';
                 @file_put_contents($caPath, $caCert);
-                $options[defined('Pdo\Mysql::ATTR_SSL_CA') ? Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA] = $caPath;
+                $options[PDO::MYSQL_ATTR_SSL_CA] = $caPath;
             } else {
-                $options[defined('Pdo\Mysql::ATTR_SSL_CA') ? Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA] = $caCert;
+                $options[PDO::MYSQL_ATTR_SSL_CA] = $caCert;
             }
         } else {
-            $options[defined('Pdo\Mysql::ATTR_SSL_CA') ? Pdo\Mysql::ATTR_SSL_CA : PDO::MYSQL_ATTR_SSL_CA] = '';
+            $options[PDO::MYSQL_ATTR_SSL_CA] = '';
         }
-        $sslVerify = defined('Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT') ? Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT : (defined('PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT') ? PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT : null);
-        if ($sslVerify !== null) {
-            $options[$sslVerify] = false;
+        if (defined('PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT')) {
+            $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = false;
         }
     }
 
