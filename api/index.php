@@ -14,6 +14,7 @@ $path = parse_url($requestUri, PHP_URL_PATH);
 $path = trim($path, '/');
 $path = $path ?: 'index';
 
+$path = preg_replace('/\.php$/', '', $path);
 $safePath = preg_replace('/[^a-zA-Z0-9\/_-]/', '', $path);
 
 $phpFile = __DIR__ . '/../' . $safePath . '.php';
